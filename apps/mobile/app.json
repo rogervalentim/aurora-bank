@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "Aurora Bank",
+    "slug": "aurora-bank",
+    "version": "0.1.0",
+    "scheme": "aurorabank",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "backgroundColor": "#0F172A",
+      "resizeMode": "contain"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.aurorabank.app"
+    },
+    "android": {
+      "package": "com.aurorabank.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#0F172A"
+      }
+    },
+    "plugins": ["expo-router"],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "apiUrl": "http://localhost:3000"
+    }
+  }
+}
