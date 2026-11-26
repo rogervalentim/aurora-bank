@@ -1,0 +1,21 @@
+{
+  "name": "aurora-bank",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Aurora Bank — Digital Banking & Backoffice Suite (monorepo)",
+  "license": "UNLICENSED",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "test": "npm run test --workspaces --if-present",
+    "test:coverage": "npm run test:coverage --workspace @aurora/shared",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
