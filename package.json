@@ -13,7 +13,10 @@
     "test:coverage": "npm run test:coverage --workspace @aurora/shared",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
-    "build": "npm run build --workspaces --if-present"
+    "build": "npm run build --workspaces --if-present",
+    "build:shared": "npm run build --workspace @aurora/shared",
+    "build:web": "npm run build:shared && npm run build --workspace @aurora/web",
+    "vercel-build": "npm run build:shared && npm run build --workspace @aurora/web"
   },
   "engines": {
     "node": ">=20"
