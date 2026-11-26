@@ -3,8 +3,8 @@ import type { AccountDTO, ProposalDTO, TransactionDTO } from '@/lib/types';
 
 /** Conta e movimentações de um cliente. */
 export interface AccountRecord {
-  readonly account: AccountDTO;
-  readonly transactions: readonly TransactionDTO[];
+  account: AccountDTO;
+  transactions: TransactionDTO[];
 }
 
 /** Estado em memória do banco sandbox. */
