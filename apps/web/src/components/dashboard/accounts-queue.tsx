@@ -43,6 +43,7 @@ export function AccountsQueue({ onNotify }: { readonly onNotify: (message: strin
 
   const rows = useMemo(() => {
     const items = data?.items ?? [];
+
     const term = query.trim().toLowerCase();
     if (!term) return items;
     return items.filter(
