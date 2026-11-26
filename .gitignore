@@ -75,3 +75,4 @@ Thumbs.db
 tmp/
 agent/
 apps/web/shots/
+apps/web/shot.cjs
