@@ -2,7 +2,7 @@
 
 Monorepo full-stack do **Aurora Bank**: app bancário mobile (cliente final) + portal web de backoffice (risco e operações), com tipos, schemas e regras financeiras compartilhados.
 
-> Especificação completa: [`SPEC.md`](./SPEC.md). Execução incremental em 4 passos — **Passos 1 e 2 concluídos** (fundação + backoffice).
+> Especificação completa: [`SPEC.md`](./SPEC.md). Execução incremental em 4 passos — **concluída** (fundação, backoffice, app mobile e diagramas).
 
 ## Estrutura
 
@@ -11,8 +11,10 @@ aurora-bank/
 ├── package.json            # npm workspaces + scripts globais
 ├── tsconfig.base.json      # TypeScript strict compartilhado
 ├── .agents/skills/         # skills diagram-design e frontend-design
+├── docs/diagrams/          # diagramas de arquitetura, Pix e consignado
 ├── packages/shared/        # @aurora/shared — tipos, Zod e regras financeiras
-└── apps/web/               # @aurora/web — backoffice Next.js 15
+├── apps/web/               # @aurora/web — backoffice Next.js 15
+└── apps/mobile/            # @aurora/mobile — app Expo + NativeWind
 ```
 
 ## Pré-requisitos
@@ -117,7 +119,25 @@ Cobrem login (sucesso, erro e sandbox), fila de KYC (skeleton, empty, erro com r
 - Proibido `any`: contratos explícitos e inferência via Zod.
 - Conventional Commits em inglês (`feat:`, `fix:`, `test:`, `docs:`, `chore:`).
 
-## Próximos passos
+## `apps/mobile` (@aurora/mobile)
 
-- **Passo 3** — `apps/mobile`: Expo Router + NativeWind, onboarding multi-step, Home/Extrato, Pix e simulador de consignado.
-- **Passo 4** — Diagramas em `docs/diagrams/` (`architecture.html`, `pix-flow.html`, `consignado-state.html`) e validação final de `npm test` / `npm run build`.
+Expo 52 + Expo Router 4 + NativeWind 4. Telas: splash, onboarding em 3 passos, Home (saldo + margem), Extrato, Perfil, Pix e simulador de consignado. Sessão em AsyncStorage e serviços REST espelhando os DTOs do backoffice.
+
+```bash
+npm run test --workspace @aurora/mobile   # 9 testes
+npx tsc --noEmit --project apps/mobile    # tipos limpos
+```
+
+Prévia estática das telas: [`apps/mobile/preview/index.html`](./apps/mobile/preview/index.html).
+
+## Diagramas
+
+Em [`docs/diagrams/`](./docs/diagrams): `architecture.html` (núcleo de regras × dois clientes), `pix-flow.html` (sequência do envio por chave) e `consignado-state.html` (máquina de estados com o portão de 35%). Cada um vem com um `.png` para colar em slides.
+
+## Validação final
+
+```text
+shared   75 testes   web 15 testes   mobile 9 testes   → 99 verdes
+npm run typecheck   → limpo
+npm run build       → 14 rotas (11 de API + /login + /dashboard + /)
+```
