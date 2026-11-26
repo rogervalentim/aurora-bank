@@ -10,14 +10,14 @@ export function decimalFromCents(cents: number): string {
   return formatDecimalBRL(cents / 100);
 }
 
-/** Taxa mensal em fração decimal para percentual: 0.0165 → "1,65%". */
+/** Taxa mensal em fração decimal: 0.0165 → "1,65%". */
 export function percentFromRate(rate: number, decimals = 2): string {
-  return formatPercentBR(rate * 100, decimals);
+  return formatPercentBR(rate, decimals);
 }
 
 /** Percentual já em pontos: 35.27 → "35,27%". */
 export function percentFromPoints(points: number, decimals = 2): string {
-  return formatPercentBR(points, decimals);
+  return formatPercentBR(points / 100, decimals);
 }
 
 /** "1.234,56" → 123456 (centavos). Tolerante a símbolos e espaços. */
